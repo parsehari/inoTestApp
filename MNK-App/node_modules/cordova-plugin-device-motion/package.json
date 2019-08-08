@@ -1,0 +1,167 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-device-motion",
+        "scope": null,
+        "escapedName": "cordova-plugin-device-motion",
+        "name": "cordova-plugin-device-motion",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/DeepakK/Desktop/Manish/MNKMobile"
+    ]
+  ],
+  "_from": "cordova-plugin-device-motion@latest",
+  "_id": "cordova-plugin-device-motion@2.0.1",
+  "_inCache": true,
+  "_location": "/cordova-plugin-device-motion",
+  "_nodeVersion": "6.6.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-device-motion_2.0.1_1523945121471_0.42500636130550795"
+  },
+  "_npmUser": {
+    "name": "stevegill",
+    "email": "stevengill97@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-device-motion",
+    "scope": null,
+    "escapedName": "cordova-plugin-device-motion",
+    "name": "cordova-plugin-device-motion",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-device-motion/-/cordova-plugin-device-motion-2.0.1.tgz",
+  "_shasum": "7f6d974c4eb8fc5ae58e9aadd63d9fa502edec6d",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-device-motion",
+  "_where": "/Users/DeepakK/Desktop/Manish/MNKMobile",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://issues.apache.org/jira/browse/CB"
+  },
+  "cordova": {
+    "id": "cordova-plugin-device-motion",
+    "platforms": [
+      "firefoxos",
+      "android",
+      "amazon-fireos",
+      "ubuntu",
+      "ios",
+      "blackberry10",
+      "wp7",
+      "wp8",
+      "windows8",
+      "windows",
+      "tizen",
+      "browser"
+    ]
+  },
+  "dependencies": {},
+  "description": "[DEPRECATED] Cordova Device Motion Plugin",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "7f6d974c4eb8fc5ae58e9aadd63d9fa502edec6d",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-device-motion/-/cordova-plugin-device-motion-2.0.1.tgz",
+    "fileCount": 46,
+    "unpackedSize": 203694,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa1Y6iCRA9TVsSAnZWagAA2wgP/jmN7Tr/BNX+pCh8b+Ur\nzdMlNBXi7/21a1VdJu5BGBE5nhb8Lp8tSKGRzZzSqqml2i1tdM7r76eAfc0Y\nk2BwJ7kdc+ErWqR9qR7E2Vg1mU1iZ1caGqCTY66UY6SFaGR/k7ivSL5hML5H\njRl6gbrpUY4r+SKF6J4Yn5MJqG3bFEErYAP2sJp+fT9k6vnFlpEL7IYWVAEu\nRh6HODo4VKrQ577qPzFWU6vIFQrS+KoCJs3JKGWE5iYifvj68vfVSS+nRUuc\n/iCpvbwE9WASGi+RRLpbsBGlqyQTyDvRF4Vca3rcv0Ej4e8zvXGIakouMSs2\nUXQcYygYWtt6RYslT2ieI8hnhT9Fa+gnI/nAwpEurN330dKieUxcNjBSIxSf\nrRHi2f9ZCw4vNh/8+UY4xXzT+UkCJvwHyvc23Wrsvsl5AUnD92FmZPRfhDij\nEvp3wHyC6L9y8HvAFERTbO3eCPwWopHQvacCKNfjUfsIwS11NCI2MgjuTv53\nAn+KfddbdHaDTHh5U4JJhBluoIhc0/n0P563tl9lKqkhLtIO1C7pP+Ut+lxD\nv4wEFjH3I+kF74wJxsEswMtKVf9eX//oY4y0W92gm7N/w2dLg5z8Pm1ysNYH\njiNYlfTnFaTYh3x84I7UGb2dvkdjPgqa33bJIDrxo+zhND2djN9ITyo5540b\nuygG\r\n=LVKn\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "3.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-device-motion#readme",
+  "keywords": [
+    "cordova",
+    "device",
+    "motion",
+    "ecosystem:cordova",
+    "cordova-firefoxos",
+    "cordova-android",
+    "cordova-amazon-fireos",
+    "cordova-ubuntu",
+    "cordova-ios",
+    "cordova-blackberry10",
+    "cordova-wp7",
+    "cordova-wp8",
+    "cordova-windows8",
+    "cordova-windows",
+    "cordova-tizen",
+    "cordova-browser"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "name": "bowserj",
+      "email": "bowserj@apache.org"
+    },
+    {
+      "name": "csantanapr",
+      "email": "csantana23@gmail.com"
+    },
+    {
+      "name": "filmaj",
+      "email": "maj.fil@gmail.com"
+    },
+    {
+      "name": "jcesarmobile",
+      "email": "jcesarmobile@gmail.com"
+    },
+    {
+      "name": "macdonst",
+      "email": "simon.macdonald@gmail.com"
+    },
+    {
+      "name": "purplecabbage",
+      "email": "purplecabbage@gmail.com"
+    },
+    {
+      "name": "shazron",
+      "email": "shazron@gmail.com"
+    },
+    {
+      "name": "stevegill",
+      "email": "stevengill97@gmail.com"
+    },
+    {
+      "name": "surajpindoria",
+      "email": "suraj.pindoria@yahoo.com"
+    },
+    {
+      "name": "vishalmishra",
+      "email": "vishalmishra0907@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-device-motion",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-device-motion.git"
+  },
+  "scripts": {
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests",
+    "test": "npm run jshint"
+  },
+  "types": "./types/index.d.ts",
+  "version": "2.0.1"
+}

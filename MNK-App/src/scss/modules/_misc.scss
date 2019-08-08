@@ -1,0 +1,52 @@
+// no li border color
+.ui-listview > .ui-li-static {
+    border-right-width: 0;
+    border-left-width: 0;
+    border-color: transparent;
+}
+
+/* more arrow */
+
+// .overview-arrow-wrap {
+//   position: absolute;
+//   z-index: 1;
+//   left: 50%;
+//   top: 640px;
+//   width: 34px;
+//   height: 34px;
+//   font-size: 0.1em;
+// }
+
+.arrow-wrap {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 640px;
+    font-size: 0.1em;
+
+    img {
+        width: 34px;
+        height: 34px;
+    }
+
+    /* top distance changes for detail page table more arrows */
+    &#del-scroll-indicator,
+    &#pu-scroll-indicator,
+    &#inventory-scroll-indicator {
+        top: 275px;
+    }
+}
+
+#popupLoaderSyncApp, #loginpopup{
+    background: transparent !important;
+    border: none !important;
+}
+
+.active-tab-bottom-border-fix {
+    display: none;
+    width: 103px;
+    height: 4px;
+    background-color: $active-tab-background;
+    position: absolute;
+    bottom: -2px;
+}

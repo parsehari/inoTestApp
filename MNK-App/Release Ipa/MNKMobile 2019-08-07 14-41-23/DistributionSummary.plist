@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MNKMobile.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>ACB2981F63B14AC657C6EE23158D45B9EDF11A2A</string>
+				<key>dateExpires</key>
+				<string>19/06/22</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>TJUL2RZLSX.com.kpit.mnkmobile</string>
+				<key>aps-environment</key>
+				<string>production</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>TJUL2RZLSX</string>
+				<key>get-task-allow</key>
+				<false/>
+			</dict>
+			<key>name</key>
+			<string>MNKMobile.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>af67ddfa-c557-460d-861b-230394201a82</string>
+				<key>name</key>
+				<string>iOS Team Inhouse Provisioning Profile: com.kpit.mnkmobile</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>TJUL2RZLSX</string>
+				<key>name</key>
+				<string>KPIT Infosystems Incorporated</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

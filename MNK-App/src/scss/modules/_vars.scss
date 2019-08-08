@@ -1,0 +1,64 @@
+// breaks
+$break-medium: 1024px;
+$break-large: 1112px;
+
+// colors
+$white: #fff;
+$black: #000;
+$main-grey: #D2CCE4;
+$main-green: #6DC069;
+$menu-link-color: #482F91;
+$menu-bg-grey: rgb(247, 247, 248);
+$default-tab-background: rgb(239, 239, 240);
+$active-tab-background: rgb(247, 247, 248);
+$active-tab-border-color: rgb(221,222,226);
+$table-border-color: rgb(221,222,226);
+$table-header-font-color: #A29CB4;
+$informative-font-color: #A29CB4;
+$table-header-background-color: rgb(247, 247, 248);
+$table-bg-color: rgb(247, 247, 248);
+
+/* route status colors */
+$completed-stop-bg-color: rgb(239, 242, 242);
+$completed-stop-font-color: rgb(114, 108, 132);
+$next-stop-bg-color: rgb(215,213,234);
+$active-stop-bg-color: rgb(228,242,209);
+$flagged-row-bg-color: rgb(255,251,251);
+$flagged-row-txt-color: #C0696D;
+
+$disabled-grey: rgba(18, 12, 36, 20);
+$form-text-gray: rgba(114, 108, 132, 50);
+
+$reminder-box-bg-color: rgba(255, 168, 172, 0.1);
+$reminder-box-border-color: rgba(255, 168, 172, 0.25);
+$reminder-box-shadow-color:rgba(0, 0, 0, 0.1);
+$reminder-box-title-color:rgb(255, 168, 172);
+$reminder-box-text-color: #C0696D;
+
+// fonts
+$main-font-light: InterstateLight;
+$main-font: Interstate;
+$main-font-bold: InterstateBold;
+
+//font size
+$h1: 24px;
+
+// borders
+$border-radius: 2px;
+
+// dimensions
+$logo-width-splash-page: 612px;
+$large-form-element-width: 613px;
+$large-form-element-height: 60px;
+
+$select-color: #fff;
+$select-background: #c0392b;
+$select-width: 220px;
+$select-height: 40px;
+
+/* jquery css overrides 
+    these values overrides the values in 
+    vendor/_jqmobile.scss file
+*/
+$panel-width: 27em; // jquery original value for panels is 17em, extending to match the design
+

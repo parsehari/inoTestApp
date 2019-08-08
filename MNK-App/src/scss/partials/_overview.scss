@@ -1,0 +1,220 @@
+// route overview
+
+#overview-content-wrap {
+    padding: 0;
+    padding-bottom: 0;
+    float: left;
+    width: 100%;
+}
+
+#info-wrap {
+    float: left;
+    margin-left: 54px;
+}
+
+.inner-info-wrap-left {
+    float: left;
+    margin-right: 20px;
+
+    // height: 152px;
+    // width: 160px
+}
+
+#overview-comments-wrap,
+#details-right-comments-wrap {
+    text-align: left;
+    position: relative;
+    background-color: $white;
+    padding: 25px 10px 20px;
+    width: 628px;
+    margin-left: 370px;
+
+    &:before {
+        position: absolute;
+        top: 7px;
+        color: $form-text-gray;
+        font-size: 12px;
+    }
+}
+
+#overview-comments-wrap {
+    &:before {
+        content: 'Comments';
+    }
+}
+
+#details-right-comments-wrap {
+    &:before {
+        content: 'Special Instructions';
+    }
+}
+
+.comments-text {
+    text-align: left;
+    height: 124px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 16px;
+    color: $form-text-gray;
+}
+
+.comments-text-details {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 130px;
+}
+
+#overview-table-wrap {
+    margin-top: 25px;
+
+    /* tableBacking: */
+    background: $table-bg-color;
+}
+
+#route-plan-overview-table-header {
+    height: 35px;
+    background: $table-header-background-color;
+    border-bottom: 6px solid $table-border-color;
+
+    span {
+        width: 120px;
+        font-size: 16px;
+        color: #423C54;
+        letter-spacing: 0;
+        line-height: 21px;
+        display: inline-block;
+        padding: .2em 1em;
+        margin: 0;
+
+        &:first-child {
+            margin-left: 52px;
+        }
+
+        &.name {
+            width: 142px;
+        }
+
+        &.city {
+            width: 142px;
+        }
+
+        &.order {
+            width: 140px;
+        }
+
+        &.arrival {
+            width: 105px;
+        }
+    }
+}
+
+.route-info {
+    width: 185px;
+    line-height: 38px;
+    font-size: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* ul container for the route list called table */
+#route-overview-table {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 216px;
+    background-color: $table-bg-color;
+
+    &.taller {
+        height: 270px;
+    }
+
+    &.ui-listview > .ui-li-static {
+        border: none;
+        padding: 0;
+    }
+
+    .route-plan-overview-li {
+        padding: 0;
+        margin: 0;
+        background-color: $white;
+
+        &.completed {
+            background-color: $completed-stop-bg-color;
+            color: $completed-stop-font-color;
+        }
+
+        &.next-stop {
+            background-color: $next-stop-bg-color;
+        }
+
+        &.active-stop {
+            background-color: $active-stop-bg-color;
+        }
+
+        span {
+            @include table-span;
+
+            width: 120px;
+            height: 73px;
+            padding: .7em;
+            margin: 0 0 1px 0;
+            float: left;
+
+            &.status-icon {
+                width: 59px;
+            }
+
+            &:last-child {
+                width: 59px;
+                border-right: none;
+            }
+
+            &.route-plan-overview-img {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+            }
+
+            &.route-plan-overview-route,
+            &.route-plan-overview-location,
+            &.route-plan-overview-order {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            &.route-plan-overview-route-name {
+                width: 150px;
+                white-space: pre-line;
+                text-overflow: ellipsis;
+
+                @include overflow-wrap;
+            }
+
+            &.route-plan-overview-city {
+                width: 150px;
+                white-space: pre-line;
+                text-overflow: ellipsis;
+            }
+
+            &.route-plan-overview-order {
+                width: 124px;
+            }
+
+            &.route-plan-overview-arrival,
+            &.route-plan-overview-departure {
+                white-space: pre-line;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
+
+.overview-footer,
+#details-footer {
+    width: 100%;
+    padding: 0 10px;
+}

@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" charset="utf-8">
+    <meta Name="msapplication-tap-highlight" content="no">
+    <meta Name="format-detection" content="telephone=no">
+    <meta Name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta Name="apple-mobile-web-app-capable" content="yes">
+
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <!-- Jquery Mobile Framework -->
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/jquery/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- Mobile Signature Framework -->
+    <script type="text/javascript" src="components/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="js/signatureCapture.js"></script>
+    <!-- Mobile Signature Framework -->
+
+    <!-- Include JAVASCRIPT LIBRARIES HERE -->
+
+    <!-- Application styles -->
+    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    <!-- Application styles -->
+
+    <!-- Database Setup -->
+    <script type="text/javascript" src="js/oData.js"></script>
+    <script type="text/javascript" src="js/db.js"></script>
+    <script type="text/javascript" src="js/dataload.js"></script>
+    <script type="text/javascript" src="js/dbQueries.js"></script>
+    <!-- Database Setup -->
+
+    <script type="text/javascript" src="js/logFileService.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+    <title>Ikaria Mobitor</title>
+</head>
+
+<body>
+    <!-- start Login View -->
+    <div id="login-view" data-role="page" class="background-splash">
+        <div data-role="content" id="content">
+            <div id="loginContainer">
+                <!-- Logo -->
+                <!-- <img class="logo" src="img/LOGO_Mallinckrodt-color.png" /> -->
+                <!-- Login interface -->
+                <input class="input" type="text" placeholder="User ID" id="userId">
+                <input class="input" type="password" id="pass" placeholder="Password">
+                <a href="#" id="sign-in-btn" data-rel="popup" data-position-to="window">
+                    <button id="signIn-btn" type="button">Sign In</button>
+                </a>
+            </div>
+
+            <div class="imgDiv"><img class="logo" src="img/LOGO_Mallinckrodt-color.png"></div>
+        </div>
+
+
+        <div data-role="popup" id="popupOverlayNoRoutePlanAssigned" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin" data-history="false">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">No route plans assigned to you</h3>
+            </div>
+        </div>
+
+        <div data-role="popup" id="popupDialogEmptyLogin" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin" data-history="false">
+            <div data-role="content" align="center">
+                <h3 id="loginErrorMsg" class="popup-header"></h3>
+                <a>
+                    <button id="login-popup-close-btn" type="button" class="active-btn">Ok</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- unsubmitted route plan popup-->
+        <div data-role="popup" id="popupDialogUnsub" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin" data-history="false">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">You have an unsubmitted route plan.
+                    <br>How would you like to proceed?
+                    <br>
+                </h3>
+                <a>
+                    <button id="unsub-btnFinishExistingRoutePlans" type="button" class="active-btn">Finish existing route plan</button>
+                </a>
+                <a data-rel="popup" data-position-to="window">
+                    <button id="unsub-btnDeleteDataUndoArrival" type="button" class="active-btn">Delete data and undo arrival</button>
+                </a>
+                <a data-rel="back">
+                    <button id="unsub-btncancel" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- unsubmitted confirmation route plan popup -->
+        <div data-role="popup" id="popupDialogUnsubConfirm" data-transition="none" data-history="false" data-dismissible="false"
+            aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin" data-history="false">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">You are about to delete existing data. This action cannot be undone.
+                    <br>Would you like to continue?</h3>
+                <a>
+                    <button id="unsubConfirm-btnSaveRoutePlan" type="button" class="active-btn">No, Save Route Plan</button>
+                </a>
+                <a>
+                    <button id="unsubConfirm-btnDeleteData" type="button" class="active-btn">Yes, Delete Data</button>
+                </a>
+            </div>
+        </div>
+        <!-- /confirm unsubmitted route plan popup -->
+    </div>
+
+    <!-- end Login View -->
+
+    <!-- start Select Route View -->
+    <div id="select-route-view" data-role="page" class="background-splash">
+
+        <div id="selectRouteContainer">
+            <!-- Logo -->
+            <img class="logo" src="img/LOGO_Mallinckrodt-color.png" />
+
+            <div id="dropDownWrap" data-role="fieldcontain">
+                <label for="select-route">Select a route plan:</label>
+                <select name="select-route" id="select-route" data-native-menu="false">
+                    <!-- <option disabled selected style="display: none;">SELECT ROUTE</option> -->
+                    <option value="hide">Select</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!-- end Select Route View -->
+
+    <!-- start Route Plan Overview -->
+    <div id="route-plan-overview-view" data-role="page" class="background-interior">
+
+        <!-- HEADER -->
+        <div data-role="header" class="header">
+            <a class="back-btn active-btn">
+                <span class="back-link-label">Back to route selection</span>
+            </a>
+            <div id="route-plan-name" class="header-text">Route Plan Overview</div>
+            <a class="menu-btn active-btn" href="#menu-panel-overview"></a>
+        </div>
+
+        <!-- CONTENT / TOP COMMENTS AND INFO -->
+        <div role="content" id="overview-content-wrap">
+            <div id="info-wrap">
+                <div class="info-wrap-left">
+                    <div id="route-info-route-name" class="info-long">Route #</div>
+                    <div id="route-info-driver-name" class="info-long">Driver Name</div>
+                    <div id="route-info-route-number" class="info-long">Route #</div>
+                </div>
+            </div>
+            <div id="overview-comments-wrap">
+                <!-- <div class="comments-text-title">COMMENTS</div> -->
+                <div id="route-info-comments" class="comments-text">
+                    This will be pre-populated, display-only comments: directions / room number where the Driver needs to go to make the pickup
+                    / drop off. This will be pre-populated, display-only comments: directions / room number where the Driver
+                    needs to go to make the pickup / drop off. This will be pre-populated, display-only comments: directions
+                    / room number where the Driver needs to go to make the pickup / drop off. This will be pre-populated,
+                    display-only comments: directions / room number where the Driver needs to go to make the pickup / drop
+                    off.
+                </div>
+            </div>
+            <!-- TABLE -->
+            <div id="overview-table-wrap">
+                <div id="route-plan-overview-table-header">
+                    <span class="route">Route</span>
+                    <span class="location">Location</span>
+                    <span class="name">Name</span>
+                    <span class="city">City, State</span>
+                    <span class="order">Order Number</span>
+                    <span class="arrival">Arrival</span>
+                    <span class="departure">Departure</span>
+                </div>
+                <ul id="route-overview-table" data-role="listview"></ul>
+                <a id="overview-scroll-indicator" class="arrow-wrap">
+                    <img src="./img/scroll-arrow.gif">
+                </a>
+            </div>
+
+            <!-- BUTTONS @ THE BOTTOM -->
+            <div class="footer overview-footer">
+                <a id="departureBtn" data-role="button" data-rel="popup" data-position-to="window">Departure</a>
+                <a id="arrivalBtn" data-role="button" data-rel="popup" data-position-to="window">Arrival</a>
+                <a id="inventoryBtn" class="active-btn" data-role="button">Inventory</a>
+            </div>
+        </div>
+
+        <!-- OVERVIEW MENU SLIDE OUT / PANEL -->
+        <div data-role="panel" id="menu-panel-overview" data-position="right" data-display="overlay" data-dismissible="false">
+            <div class="menu-items-box">
+                <div class="menu-header">Menu</div>
+
+                <div class="menu-items" id="sync-app-overview">Sync app
+                    <span class="lastUpdate">
+                        <!-- last update time -->
+                    </span>
+                </div>
+                <a id="link-menu-panel-select-route">
+                    <div class="menu-items" id="menu-panel-select-route">Select route</div>
+                </a>
+                <div class="menu-items" id="reset-form-overview">Reset form</div>
+                <div class="menu-items" id="send-console-log">Send log</div>
+                <div class="menu-items" id="delete-console-log">Delete log</div>
+            </div>
+
+            <a id="mainmenuSignOut" data-rel="popup" data-position-to="window">
+                <div class="menu-items">Sign Out</div>
+            </a>
+        </div>
+        <!-- /panel -->
+
+        <!-- ODOMETER READING POPUP -->
+        <div data-role="popup" id="popupDialogOdo" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin" data-history="false">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Enter odometer reading</h3>
+                <div id="odometer-input">
+                    <input id="txtOdoMeter" pattern="[0-9]*">
+                    <div id="txtOdoMeter-error" class="warning">Please enter odometer reading</div>
+                </div>
+                <a id="departureEnterBtn">
+                    <button id="odo-btn" class="active-btn" type="button">Submit</button>
+                </a>
+                <a data-rel="back">
+                    <button id="cancel-odo-btn" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- /odometer popup -->
+        <!-- ARRIVAL CONFIRMATION POPUP -->
+        <div id="popupDialogArv" data-role="popup" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin" data-history="false">
+            <div data-role="content" align="center">
+                <h3 class="popup-header" id="arrival-info-header">Confirm arrival at</h3>
+                <h3 class="popup-header" id="arrival-info-location">Location</h3>
+                <a id="arrivalConfirmBtn">
+                    <button id="odo-btn" class="active-btn" type="button">Confirm</button>
+                </a>
+                <a id="arrivalCancelBtn" data-rel="back">
+                    <button id="cancel-odo-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- /arrival conf popup -->
+
+        <!-- DEPARTURE CONFIRMATION POPUP -->
+        <div id="popupDialogDep" data-role="popup" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Confirm departure</h3>
+                <a id="departureConfirmBtn">
+                    <button id="odo-btn" class="active-btn" type="button">Confirm</button>
+                </a>
+                <a id="departureCancelBtn" data-rel="back">
+                    <button id="cancel-odo-btn" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- END of DEPARTURE conf popup -->
+
+        <!-- UN COMPLETED ROUTES POPUP -->
+        <div id="popupDialogUnComp" data-role="popup" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Route plan incomplete.
+                    <br>How would you like to proceed?
+                    <br>
+                </h3>
+                <a id="unCompConfirmBtn">
+                    <button id="unCompConfirmBtn-odo-btn" class="active-btn" type="button">Confirm</button>
+                </a>
+                <a id="unCompCancelBtn" data-rel="back">
+                    <button id="unCompCancelBtn-cancel-odo-btn" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- END of UN COMPLETED ROUTES POPUP -->
+        <div data-role="popup" id="popupDialogExitConf-overview" data-transition="none" data-history="false" data-dismissible="false"
+            aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Are you sure you want to delete data and undo arrival?
+                    <br>You cannot undo this action.</h3>
+                <a>
+                    <button id="confirmedDelete-overview" class="active-btn" type="button">Yes, delete data.</button>
+                </a>
+                <a data-rel="back">
+                    <button id="unsub-cancel-btn-overview" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <div data-role="popup" id="popupDialogSgnOut-overview" data-transition="none" data-history="false" data-dismissible="false"
+            aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Are you sure you want to sign out?</h3>
+                <a href="#login-view" class="sign-out" data-role="button" data-inline="true" data-shadow="false" style="margin: 0; padding: 0;">
+                    <button id="sign-out-btn" class="active-btn" style="margin: 10px;">Yes, sign out</button>
+                </a>
+                <a href="#back" class="sign-out" data-role="button" data-inline="true" data-shadow="false" data-rel="back" style="margin: 0; padding: 0;">
+                    <button id="sign-out-cancel-btn">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayPleaseSubmitData" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin" data-history="false">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Please submit data for this location</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- end Route Plan Overview -->
+
+    <!-- start Details View -->
+    <div id="details-view" data-role="page" class="background-interior">
+        <div class="header">
+            <div class="header-text">Customer Route Details</div>
+            <a class="menu-btn  active-btn" href="#menu-panel-details"></a>
+        </div>
+
+        <div data-role="content">
+
+            <!-- Scan Panel -->
+            <div id="scan-panel">
+                <div class="details-header-text slider-header-text">Scan
+                    <span id="scan-title"></span> Item</div>
+                <div class="scan-input-header">Serial Number</div>
+                <div class="details-input-wraps">
+                    <input id="item-serial-no" placeholder="Tap to scan and enter serial">
+                </div>
+                <div class="scan-input-header">Material Number</div>
+                <div class="details-input-wraps">
+                    <input id="item-material-no" placeholder="Tap to scan and enter material">
+                </div>
+                <div class="scan-input-header">Batch Number</div>
+                <div class="details-input-wraps">
+                    <input id="item-batch-no" placeholder="Tap to scan and enter batch">
+                </div>
+
+                <div class="quantity-input-header quantity-input-header-active" id="item-quantity-header">Quantity</div>
+                <div class="quantity-input-header quantity-input-header-active" id="item-hours-header">Hours</div>
+
+                <div class="details-input-wraps">
+                    <div class="scan-quantity-header" id="item-quantity-div">
+                        <input pattern="[0-9]*" id="item-quantity" disabled>
+                    </div>
+                    <div class="scan-hours-header" id="item-hours-div">
+                        <input pattern="[0-9]*" maxlength="4" id="item-hours" disabled>
+                    </div>
+                </div>
+
+            </div>
+            <!-- / Scan Panel -->
+
+            <div id="details-content-wrap">
+
+                <div id="details-content-main-wrap">
+                    <div id="info-wrap">
+                        <div class="info-wrap-left">
+                            <div id="route-plan-detail-location" class="info-long">San Fransisco second line if needed San Fransisco second line if needed</div>
+                            <div id="route-plan-detail-name" class="info-long">San Fransisco second line if needed San Fransisco second line if needed</div>
+                            <div id="route-plan-detail-orderno" class="info-long">San Fransisco second line if neededSan Fransisco second line if needed</div>
+                        </div>
+                    </div>
+                    <div id="details-right-comments-wrap">
+                        <div id="details-comments" class="comments-text">
+                            These will be prepopulated, display only comments or instructions: direction / room number where Driver needs to go to make
+                            the pickup / dropoff. Potential 4th line of comments. These will be prepopulated, display only
+                            comments or instructions: direction / room number where Driver needs to go to make the pickup
+                            / dropoff. Potential 4th line of comments. These will be prepopulated, display only comments
+                            or instructions: direction / room number where Driver needs to go to make the pickup / dropoff.
+                            Potential 4th line of comments.
+                        </div>
+                    </div>
+
+                    <div data-role="tabs" id="details-tabs">
+                        <div data-role="navbar">
+                            <ul class="tab-bar">
+                                <li id="delivery-tab">
+                                    <a id="delivery-tab-inner" href="#delivery-tab-view" data-ajax="false">Delivery</a>
+                                    <div class="active-tab-bottom-border-fix">&nbsp;</div>
+                                </li>
+                                <li id="pickup-tab">
+                                    <a id="pickup-tab-inner" href="#pickup-tab-view" data-ajax="false">Pickup</a>
+                                    <div class="active-tab-bottom-border-fix">&nbsp;</div>
+                                </li>
+                                <li id="inventory-tab">
+                                    <a id="inventory-tab-inner" href="#inventory-tab-view" data-ajax="false">Inventory</a>
+                                    <div class="active-tab-bottom-border-fix">&nbsp;</div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="delivery-tab-view" role="tabpanel">
+                            <div class="details-table-header-wrap">
+                                <span class="item">Item</span>
+                                <span class="description" id="del-header-desc">Description</span>
+                                <span class="expected" id="del-header-expQty">Expected Quantity</span>
+                                <span class="confirmed" id="del-header-confQty">Confirmed Quantity</span>
+                            </div>
+                            <ul id="details-delivery-table" data-inset="true" data-role="listview" data-itemavailable="true"></ul>
+                            <a id="del-scroll-indicator" class="arrow-wrap">
+                                <img src="./img/scroll-arrow.gif">
+                            </a>
+                        </div>
+                        <div id="pickup-tab-view" role="tabpanel">
+                            <div class="details-table-header-wrap">
+                                <span class="item">Item</span>
+                                <span class="description" id="pic-header-desc">Description</span>
+                                <span class="expected" id="pic-header-expQty">Expected Quantity</span>
+                                <span class="confirmed" id="pic-header-confQty">Confirmed Quantity</span>
+                            </div>
+                            <ul id="details-pickup-table" data-inset="true" data-role="listview"></ul>
+                            <a id="pu-scroll-indicator" class="arrow-wrap">
+                                <img src="./img/scroll-arrow.gif">
+                            </a>
+                        </div>
+                        <div id="inventory-tab-view" role="tabpanel">
+                            <div class="details-table-header-wrap">
+                                <span class="item">Item</span>
+                                <span class="description" id="pic-header-desc">Description</span>
+                                <span class="committed" id="pic-header-expQty">Committed Quantity</span>
+                                <span class="total" id="pic-header-confQty">Total Quantity</span>
+                            </div>
+                            <ul id="details-inventory-table" data-inset="true" data-role="listview"></ul>
+                            <a id="inventory-scroll-indicator" class="arrow-wrap">
+                                <img src="./img/scroll-arrow.gif">
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="footer" id="details-footer">
+                        <a id="exitBtn" data-rel="popup" data-position-to="window" data-role="button" class="exit-page active-btn">Exit</a>
+                        <a id="reviewBtn" href="#review-view" data-role="button" class="active-btn">Review</a>
+                    </div>
+                </div>
+            </div>
+            <!-- SIGN OUT CONFIRMATION POPUP -->
+            <div data-role="popup" id="popupDialogSgnOut" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+                data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+                <div data-role="content" align="center">
+                    <h3 class="popup-header">Are You Sure You Want To Sign Out?</h3>
+                    <a href="#login-view" class="sign-out-link" data-role="button" data-inline="true" data-shadow="false">
+                        <button id="sign-out-btn" class="active-btn">Yes, sign out</button>
+                    </a>
+                    <a href="#back" data-role="button" data-inline="true" data-shadow="false">
+                        <button id="sign-out-cancel-btn">Cancel</button>
+                    </a>
+                </div>
+            </div>
+            <!-- /sign out popup -->
+        </div>
+
+        <!-- DETAILS MENU SLIDE OUT / PANEL -->
+        <div id="menu-panel-details" data-role="panel" data-position="right" data-dismissible="false" data-display="overlay">
+            <div class="menu-items-box">
+                <div class="menu-header">Menu</div>
+
+                <div class="menu-items" id="sync-app-details">Sync app
+                    <span class="lastUpdate">
+                        <!-- last update time -->
+                    </span>
+                </div>
+                <a id="link-menu-panel-detail-select-route">
+                    <div class="menu-items" id="menu-panel-detail-select-route">Select route</div>
+                </a>
+                <div class="menu-items" id="reset-form-details">Reset form</div>
+                <div class="menu-items" id="send-console-log">Send log</div>
+                <div class="menu-items" id="delete-console-log">Delete log</div>
+
+            </div>
+            <a id="mainmenuSignOutOne" data-rel="popup" data-position-to="window">
+                <div class="menu-items">Sign Out</div>
+            </a>
+        </div>
+        <!-- /panel -->
+
+
+        <!-- SELECT EXIT PREFRENCE CONFIRMATION POPUP -->
+        <div data-role="popup" id="popupDialogExit" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Select exit preference</h3>
+                <a>
+                    <button id="save-btn" class="active-btn" type="button">Save data</button>
+                </a>
+                <a>
+                    <button id="confirmDelete" class="active-btn" type="button">Delete data and undo arrival</button>
+                </a>
+                <a data-rel="back">
+                    <button id="unsub-cancel-btn" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- /exit popup -->
+        <!-- CONFIRM EXIT POPUP -->
+        <div data-role="popup" id="popupDialogExitConf" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Are you sure you want to delete data and undo arrival?
+                    <br>You cannot undo this action</h3>
+                <a>
+                    <button id="confirmedDelete" class="active-btn" type="button">Yes, delete data</button>
+                </a>
+                <a data-rel="back">
+                    <button id="unsub-cancel-btn-details" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- /exit confirmation popup -->
+        <!-- Item NOT EXPECTED ADD ANYWAYS POPUP -->
+        <div data-role="popup" id="popupDialogINE" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Item not expected
+                    <br>Add anyway?</h3>
+                <a>
+                    <button id="ine-btn-pickup" class="active-btn" type="button">Yes, add item</button>
+                </a>
+                <a data-rel="back">
+                    <button id="ine-cancel-btn" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- /Item not expected popup -->
+        <!-- Item NOT EXPECTED DELIVER ANYWAYS POPUP -->
+        <div data-role="popup" id="popupDialogINE2" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">
+                    <span id="location"></span>Item not expected
+                    <br>Deliver anyway?</h3>
+                <a>
+                    <button id="ine-btn-delivery" class="active-btn" type="button">Yes</button>
+                </a>
+                <a data-rel="back">
+                    <button id="ine-cancel-btn" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- /Item not expected deliver anyway popup -->
+
+        <!-- Item NOT EXPECTED DELIVER ANYWAYS POPUP -->
+        <div data-role="popup" id="popupDialogINE2a" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">
+                    <span id="location"></span>Item is reserved for other orders.
+                    <br>Can not deliver extra item.</h3>
+                <a data-rel="back">
+                    <button id="ine-cancel-btn" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- /Item not expected deliver anyway popup -->
+
+
+        <!-- Item NOT IN INVENTORY PROCEED ANYWAYS POPUP -->
+        <div data-role="popup" id="popupDialogINE3" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header" id="popupDialogINE3-msg">Item not present in customer inventory
+                    <br>Proceed Anyway?</h3>
+                <a>
+                    <button id="ine-btn-pickup3" class="active-btn" type="button">Yes</button>
+                </a>
+                <a data-rel="back">
+                    <button id="ine3-cancel-btn" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- /Item not in inventory proceed anyways popup -->
+        <!-- Item NOT IN INVENTORY ADD ANYWAYS POPUP -->
+        <div data-role="popup" id="popupDialogINE4" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header" id="popupDialogINE4-msg">Item not present in customer inventory
+                    <br>Add anyway?</h3>
+                <a>
+                    <button id="ine-btn-pickup4" class="active-btn" type="button">Yes, add item</button>
+                </a>
+                <a data-rel="back">
+                    <button id="ine4-cancel-btn" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- /Item not in inventory add anyways popup -->
+        <!-- CANNOT DELIVER POPUP -->
+        <div data-role="popup" id="popupDialogCannot" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Cannot deliver.
+                    <br>Item not in inventory.</h3>
+                <a data-rel="back">
+                    <button id="ine-cancel-btn" class="active-btn" type="button">Ok</button>
+                </a>
+            </div>
+        </div>
+        <!-- /can't deliver popup -->
+
+        <div data-role="popup" id="popupDialogEnterBatch" data-transition="none" data-history="false" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Do you want to enter batch number?</h3>
+                <a>
+                    <button id="enterbatch-yes" class="active-btn" type="button">Yes</button>
+                </a>
+                <a>
+                    <button id="enterbatch-no" class="active-btn" type="button">No</button>
+                </a>
+            </div>
+        </div>
+
+        <div data-role="popup" id="popupOverlayNoDataFound" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Item can’t be delivered</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayItemPickedUp" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">This item is already picked up</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayItemDelivered" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">This item is already delivered</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayItemNotInInventory" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Not inventory item</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayItemAdded" data-transition="pop" data-dismissible="false" aria-disabled="false" data-disabled="false"
+            data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Item added successfully</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayWrongItemScan" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">This item is part of truck inventory</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayEnterMaterial" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Please enter material number</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayItemCheckQty" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Please check available quantity</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayItemReserved" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Remaining inventory for this item reserved for other orders.</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayItemScanSerial" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Not inventory item</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayEnterValidNumber" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Please enter a valid number</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayEnterHours" data-transition="pop" data-dismissible="false" aria-disabled="false" data-disabled="false"
+            data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Please enter hours</h3>
+            </div>
+        </div>
+        <div data-role="popup" id="popupOverlayQtyGreaterThanZero" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Quantity should be greater than zero</h3>
+            </div>
+        </div>
+    </div>
+    <!-- end details view -->
+
+    <!-- Route Plan Review View -->
+    <div id="review-view" data-role="page" class="background-interior">
+
+        <!-- HEADER -->
+
+        <div data-role="header" class="header">
+
+            <a class="back-btn">
+                <span class="back-link-label">Back to order detail</span>
+            </a>
+
+            <a id="edit-btn" class="ui-link ui-btn-right ui-btn ui-shadow ui-corner-all active-btn">
+                <img src="./img/ICON_pen.png">
+            </a>
+            <a id="edit-done-btn" class="ui-link ui-btn-right ui-btn ui-shadow ui-corner-all active-btn" style="display:none;">
+                <img src="./img/ICON_check2.png">
+            </a>
+            <div class="header-text"></div>
+        </div>
+        <!-- CONTENT -->
+        <div data-role="content">
+            <div id="review-top-wrap">
+                <div id="info-wrap">
+                    <div class="inner-info-wrap-left">
+                        <!-- Date, Route Name, Driver Name -->
+                        <div id="route-plan-review-date" class="info-long">Date</div>
+                        <div id="route-plan-review-route-name" class="info-long">Route #</div>
+                        <div id="route-plan-review-driver-name" class="info-long">Drive Name</div>
+                    </div>
+                    <div class="inner-info-wrap-left">
+                        <!-- Location, Name, Order Number  -->
+                        <div id="route-plan-review-location" class="info-long">Location</div>
+                        <div id="route-plan-review-name" class="info-long">Name</div>
+                        <div id="route-plan-review-order-no" class="info-long">Order #</div>
+                    </div>
+                </div>
+
+
+                <div id="pickup-review-table-header" class="review-table-wrap">
+                    <div class="review-headers">Pickup Review</div><br>
+                    <div class="review-table-header-wrap">
+                        <span class="item">Item</span>
+                        <span class="description">Description</span>
+                        <span class="batch">Batch</span>
+                        <span class="serial">Serial</span>
+                        <span class="hours">Hours</span>
+                    </div>
+                    <ul id="pickup-review-table" class="review-list" data-role="listview">
+                        <!-- Reminder message when no item is picked up -->
+                        <li class="no-items-message"></li>
+                    </ul>
+                </div>
+                <div id="delivery-review-table-header" class="review-table-wrap">
+                    <div class="review-headers">Delivery Review</div><br>
+                    <div class="review-table-header-wrap">
+                        <span class="item">Item</span>
+                        <span class="description">Description</span>
+                        <span class="batch">Batch</span>
+                        <span class="serial">Serial</span>
+                        <span class="quantity">Quantity</span>
+                    </div>
+                    <ul id="delivery-review-table" class="review-list" data-role="listview">
+                        <!-- Reminder message when no item is picked up -->
+                        <li class="no-items-message"></li>
+                    </ul>
+                </div>
+
+                <div id="sign-order">
+                    <div class="review-headers">Signature
+                        <span class="required visible">(REQUIRED)</span>
+                    </div>
+                    <div id="sign-input">
+                        <img id="clear-sign" src="./img/ICON_clearX.png" />
+                        <canvas id="signature" />
+                    </div>
+
+                    <div id="signed-img" class="signedImg">
+                        <img id="sign-img" src />
+                    </div>
+
+                    <div id="name-input">
+                        <input id="customer-name" type="text">
+                    </div>
+
+                    <div class="signature-message">
+                        <p>
+                            <span>NOTE:</span>
+                            <br /> You must collect a signature. Should you be unable to collect a signature on-site, please sign
+                            your own name.</p>
+                    </div>
+                </div>
+
+                <div class="footer" id="review-footer">
+                    <a id="cancelBtn" class="active-btn" data-role="button">Cancel</a>
+                    <a id="submitBtn" class="active-btn" data-role="button">Submit</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item Delete CONFIRMATION POPUP -->
+        <div id="popupItemDeleteConfirmation" data-role="popup" data-transition="none" data-history="false" data-dismissible="false"
+            aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Are you sure you want to delete this item?
+                    <br> You cannot undo this action</h3>
+                <a id="ItemDeleteConfirmBtn">
+                    <button id="odo-btn" class="active-btn" type="button">Yes, delete</button>
+                </a>
+                <a id="ItemDeleteCancelBtn" data-rel="back">
+                    <button id="cancel-delete-item" class="active-btn" type="button">Cancel</button>
+                </a>
+            </div>
+        </div>
+        <!-- End Item Delete CONFIRMATION POPUP -->
+
+        <!-- Edit Done CONFIRMATION POPUP -->
+        <div id="popupDeliveryPickupEditDone" data-role="popup" data-transition="none" data-history="false" data-dismissible="false"
+            aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Would you like to scan a new item?</h3>
+                <a id="scan-new-item">
+                    <button id="scan-new-btn" class="active-btn" type="button">Yes, scan new item</button>
+                </a>
+                <a href="#review-view">
+                    <button id="cancel-odo-btn" class="active-btn" type="button">No. return to route review</button>
+                </a>
+            </div>
+        </div>
+        <!-- End Edit Done CONFIRMATION POPUP -->
+
+        <div id="popupOverlayCustomerSign" data-role="popup" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Please provide signature and name</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- end Route Plan Review View -->
+
+    <!-- Screen 17 Route Plan Review Confirmation -->
+    <div id="review-view-submit-confirmation" data-role="page" class="background-interior">
+
+        <!-- HEADER -->
+
+        <div data-role="header" class="header">
+            <div class="header-text">Confirmation</div>
+        </div>
+
+        <!-- CONTENT -->
+        <div data-role="content" align="center">
+            <div id="route-plan-review-confirmation-header-text"></div>
+            <a id="review-submitconfirmation-RoutePlanReview" class="active-btn">Back to Route Plan Overview</a>
+        </div>
+    </div>
+    <!-- End Screen 17 Route Plan Review Confirmation -->
+
+    <!-- start Inventory View / added exit function to exit button in the footer -->
+    <div id="inventory-page-view" data-role="page" class="background-interior">
+
+        <div data-role="header" class="header">
+            <div class="header-text">Inventory</div>
+            <a id=inventoryDoneBtn data-role=button class=active-btn></a>
+        </div>
+
+        <div data-role="content">
+            <div id="inventory-table-wrap">
+                <div class="inventory-table-header">
+                    <span class="item">Item</span>
+                    <span class="description">Description</span>
+                    <span class="committed">Committed Quantity</span>
+                    <span class="total">Total Quantity</span>
+                </div>
+                <ul id="inventory-table-details" class="page-view" data-role="listview"></ul>
+                <a id="inv-view-scroll-indicator" class="arrow-wrap">
+                    <img src="./img/scroll-arrow.gif">
+                </a>
+            </div>
+
+            <!-- BUTTONS @ THE BOTTOM -->
+            <div class="footer inventory-footer">
+                <a id="inventoryDoneExitBtn" data-role="button" data-position-to="window">Exit</a>
+            </div>
+        </div>
+
+        <!-- SELECT SINGLE ROUTE ALERT POPUP -->
+        <div id="popupAlertSingleRoute" data-role="popup" data-transition="pop" data-dismissible="false" aria-disabled="false" data-disabled="false"
+            data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">You have only one route assigned</h3>
+                <a id="single-route-alert-btn">
+                    <button id="single-route-alert" class="active-btn" type="button">OK</button>
+                </a>
+            </div>
+        </div>
+        <!-- End SELECT SINGLE ROUTE ALERT POPUP -->
+
+        <div id="popupOverlayDataDeleted" data-role="popup" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Data deleted successfully</h3>
+            </div>
+        </div>
+        <div id="popupOverlayCannotDeleteData" data-role="popup" data-transition="pop" data-dismissible="false" aria-disabled="false"
+            data-disabled="false" data-shadow="true" data-corners="true" data-position-to="origin">
+            <div data-role="content" align="center">
+                <h3 class="popup-header">Cannot delete data as customer signature is present</h3>
+            </div>
+        </div>
+
+    </div>
+    <!-- end Inventory View -->
+    <!-- Syn App Loader popup -->
+    <div id="popupLoaderSyncApp" class="loaderPopupSync" data-role="popup" data-dismissible="false" align="center">
+        <img src='./img/ICON_loader_light.svg' />
+    </div>
+
+    <!-- Loading / Busy indicator  -->
+    <div data-role="popup" id="loginpopup" class="loaderPopupLogin" data-dismissible="false" align="center" data-history="false">
+        <img src="./img/ICON_loader.svg" />
+    </div>
+
+</body>
+
+</html>

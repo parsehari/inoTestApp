@@ -1,0 +1,70 @@
+{
+  "name": "mnkmobileqa",
+  "version": "0.6.15",
+  "description": "MNK Mobile Delivery Tracking App",
+  "main": "index.js",
+  "dependencies": {
+    "cordova-ios": "^4.5.5",
+    "cordova-plugin-battery-status": "^2.0.2",
+    "cordova-plugin-camera": "^4.0.3",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-device-motion": "^2.0.1",
+    "cordova-plugin-dialogs": "^2.0.1",
+    "cordova-plugin-email": "^1.2.7",
+    "cordova-plugin-file": "^6.0.1",
+    "cordova-plugin-file-transfer": "^1.7.1",
+    "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-keyboard": "^1.2.0",
+    "cordova-plugin-media": "^5.0.2",
+    "cordova-plugin-media-capture": "^3.0.2",
+    "cordova-plugin-network-information": "^2.0.1",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-vibration": "^3.1.0",
+    "gulp": "^3.9.1",
+    "phonegap-plugin-push": "^2.2.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-header": "^1.7.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.8",
+    "jshint": "^2.9.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-battery-status": {},
+      "cordova-plugin-camera": {},
+      "cordova-plugin-compat": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-email": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-keyboard": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-vibration": {},
+      "cordova-plugin-device-motion": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-media": {
+        "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO"
+      },
+      "cordova-plugin-media-capture": {},
+      "cordova-plugin-network-information": {}
+    },
+    "platforms": [
+      "ios"
+    ]
+  }
+}

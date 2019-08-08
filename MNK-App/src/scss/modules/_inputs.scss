@@ -1,0 +1,120 @@
+
+.ui-popup-container input {
+    @include input;
+    width: 402px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* data output box labels */
+#route-info-route-name {
+    &:before {
+        content: 'Route name';
+    }
+}
+
+#route-info-driver-name {
+    &:before {
+        content: 'Driver name';
+    }
+}
+
+#route-info-truck-mobile {
+    &:before {
+        content: 'Truck mobile';
+    }
+}
+
+#route-info-route-number {
+    &:before {
+        content: 'Route number';
+    }
+}
+
+#route-plan-detail-location {
+    // height: 74px;
+
+    &:before {
+        content: 'Location';
+    }
+}
+
+#route-plan-detail-name {
+    // height: 74px;
+
+    &:before {
+        content: 'Name';
+    }
+}
+
+#route-plan-detail-orderno {
+    // height: 74px;
+
+    &:before {
+        content: 'Order number';
+    }
+}
+
+#route-plan-review-date {
+    &:before {
+        content: 'Date';
+    }
+}
+
+#route-plan-review-route-name {
+    &:before {
+        content: 'Route Name';
+    }
+}
+
+#route-plan-review-driver-name {
+    &:before {
+        content: 'Driver Name';
+    }
+}
+
+#route-plan-review-location {
+    &:before {
+        content: 'Location';
+    }
+}
+
+#route-plan-review-name {
+    &:before {
+        content: 'Name';
+    }
+}
+
+#route-plan-review-order-no {
+    &:before {
+        content: 'Order Number';
+    }
+}
+
+/* text fields for information data output */
+.info-long {
+    background-color: $white;
+    position: relative;
+    margin-bottom: 2px;
+    padding: 25px 10px;
+    font-size: 16px;
+    text-align: left;
+    height: 55px;
+    width: 296px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:before {
+        position: absolute;
+        top: 7px;
+        color: $form-text-gray;
+        font-size: 12px;
+    }
+}
+
+#customer-name {
+    @include input;
+    height: 65px;
+    padding: 22px 5px 5px 14px;
+}

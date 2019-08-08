@@ -1,0 +1,158 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-media-capture@^3.0.2",
+        "scope": null,
+        "escapedName": "cordova-plugin-media-capture",
+        "name": "cordova-plugin-media-capture",
+        "rawSpec": "^3.0.2",
+        "spec": ">=3.0.2 <4.0.0",
+        "type": "range"
+      },
+      "/Users/DeepakK/Desktop/Manish/MNKMobile"
+    ]
+  ],
+  "_from": "cordova-plugin-media-capture@>=3.0.2 <4.0.0",
+  "_id": "cordova-plugin-media-capture@3.0.2",
+  "_inCache": true,
+  "_location": "/cordova-plugin-media-capture",
+  "_nodeVersion": "6.6.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-media-capture_3.0.2_1523945149767_0.16882842347649074"
+  },
+  "_npmUser": {
+    "name": "stevegill",
+    "email": "stevengill97@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-media-capture@^3.0.2",
+    "scope": null,
+    "escapedName": "cordova-plugin-media-capture",
+    "name": "cordova-plugin-media-capture",
+    "rawSpec": "^3.0.2",
+    "spec": ">=3.0.2 <4.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-media-capture/-/cordova-plugin-media-capture-3.0.2.tgz",
+  "_shasum": "da657c2faadcfc7fdc2868e59d215ed83e700c3a",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-media-capture@^3.0.2",
+  "_where": "/Users/DeepakK/Desktop/Manish/MNKMobile",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://issues.apache.org/jira/browse/CB"
+  },
+  "cordova": {
+    "id": "cordova-plugin-media-capture",
+    "platforms": [
+      "android",
+      "ios",
+      "windows",
+      "browser"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova Media Capture Plugin",
+  "devDependencies": {
+    "eslint": "^4.0.0",
+    "eslint-config-semistandard": "^11.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "da657c2faadcfc7fdc2868e59d215ed83e700c3a",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-media-capture/-/cordova-plugin-media-capture-3.0.2.tgz",
+    "fileCount": 76,
+    "unpackedSize": 2870352,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa1Y6/CRA9TVsSAnZWagAAC4cP/jyccwgxGfl60T5QspD+\nOYcjFKNYh8TjtI0Z8uGiSBaobZaevz/d5UEatDwHBhZEuqGJh9rz1eIGifzr\nskic3QyfQlw4c/0LGqLpkz0wRBPw2ASs8jIQw9tTJY2K/vyx6S3n6WV/XFbd\nXmeSadvsoKtIUX/HNEK6HrqThXTu1X1+EjtlPrMQR1mJNv1Ig/kWBH0YMIfh\njTBJT+fABVDTYyR6x6LHvDUX5PmRdW5SfZT5bzXhyw/CyPa8G3X6z07Lt7VM\nzccrwd9i0n5uw5ClyTwqkI69bedC09L3RFsE4zceULiw/K1yFM46cMEmQDqD\n/EYzxVMsE3zfTEN2lK8h7n0nDx448UdIV/mOrEGrcCOt63DbdmehQH57EqVk\nM6M/e219jMe9x++XRO2GKpqhAMt9nmTUdnzyPKCrtJufZ5dlc0ZqZ1Wi6nnW\nqrJcwlPGtUH5MsG7CTECtV/mvn8NP6KX+4iWUfuDjPVNI58bqP3ZN0SPX/rN\nQmZiJ4sG5y0LHDJum0qpny03p9JG3/EE++uKF1AYgDlMu1pvZHJ/HsagmScm\ndP/wR3SqqVaXdZxcGmjWZIBAG/B6E/37onKMCNr8c8T/0umdOILBAoO20gJ4\nCeCpXNk4xzWZDTwBcvYRx392A9pazoV3lkRU/U/aJuohrrN6TivlZDNTB1i/\nRKgn\r\n=RiYN\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova-android": ">=6.3.0"
+      },
+      "4.0.0": {
+        "cordova": ">100"
+      },
+      ">=1.4.4": {
+        "cordova-ios": ">=4.0.0"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-media-capture#readme",
+  "keywords": [
+    "cordova",
+    "media",
+    "capture",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "name": "bowserj",
+      "email": "bowserj@apache.org"
+    },
+    {
+      "name": "csantanapr",
+      "email": "csantana23@gmail.com"
+    },
+    {
+      "name": "filmaj",
+      "email": "maj.fil@gmail.com"
+    },
+    {
+      "name": "jcesarmobile",
+      "email": "jcesarmobile@gmail.com"
+    },
+    {
+      "name": "macdonst",
+      "email": "simon.macdonald@gmail.com"
+    },
+    {
+      "name": "purplecabbage",
+      "email": "purplecabbage@gmail.com"
+    },
+    {
+      "name": "shazron",
+      "email": "shazron@gmail.com"
+    },
+    {
+      "name": "stevegill",
+      "email": "stevengill97@gmail.com"
+    },
+    {
+      "name": "surajpindoria",
+      "email": "suraj.pindoria@yahoo.com"
+    }
+  ],
+  "name": "cordova-plugin-media-capture",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-media-capture.git"
+  },
+  "scripts": {
+    "eslint": "eslint www && eslint src && eslint tests",
+    "test": "npm run eslint"
+  },
+  "types": "./types/index.d.ts",
+  "version": "3.0.2"
+}

@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-size: 62.5%;
+}
+
+body {
+    font: 300 13px/1.6 InterstateLight;
+    transition: all .4s .3s ease-in;
+    overflow: auto;
+    height: 100%;
+
+    .background-splash {
+        background: url(../img/background-splash.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .background-interior {
+        background: url(../img/background-interior.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+}
+
+body, html {
+    min-height: 100vh;
+    -webkit-touch-callout: none;
+	-webkit-text-size-adjust: none;
+	-webkit-user-select: none;
+    user-select: none;
+
+    button {
+        outline: none;
+    }
+
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+* {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+a:-webkit-any-link {
+	text-decoration: none;
+}
+
+.ui-footer,.ui-header {
+	border: 0;
+}
+
+.ui-content {
+	border-width: 0;
+	padding: 0px !important;
+}
+
+.ui-page-theme-a .ui-bar-inherit {
+	text-shadow: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.ui-listview > .ui-li-static.ui-li-has-thumb {
+    padding-left: 0 !important;
+}
+
+.ui-listview > .ui-li-static {
+    padding: .4em 0;
+}
+
+/* Table no item found message */
+
+.no-items-message {
+    /* default hidden, turn on through index.js */
+    display: none;
+
+    @include reminder;
+    padding: 20px;
+
+    &:before {
+        content: "No items found.";
+    }
+}

@@ -1,0 +1,166 @@
+[data-role='popup'] {
+    a {
+        button {
+            /* Style */
+            @include btn;
+
+            /* Dimensions, margins*/
+            @include popupBtn;
+
+            /* Wrap it for long labels */
+            white-space: normal;
+            margin: 10px 10px 0;
+            padding: 5px;
+        }
+    }
+
+    a[data-rel='back'] { //cancel button
+        button {
+            /* Style */
+            @include active-passive;
+        }
+    }
+}
+
+#signIn-btn {
+    /* Style */
+    @include btn;
+
+    /* initial state: passive */
+    @include passiveBtn;
+}
+
+/* a links styled as passive buttons */
+#departureBtn,
+#arrivalBtn,
+#inventoryBtn,
+#exitBtn,
+#reviewBtn,
+#inventoryDoneExitBtn,
+#cancelBtn,
+#submitBtn,
+#mainmenuSignOut,
+#mainmenuSignOutOne,
+#cancelBtn,
+#review-submitconfirmation-RoutePlanReview {
+    @include footerBtn;
+
+    margin-right: 10px;
+    float: left;
+}
+
+#inventoryBtn {
+    float: right;
+}
+
+#departureBtn,
+#arrivalBtn {
+    @include passiveBtn;
+
+    float: left;
+}
+
+#mainmenuSignOut,
+#mainmenuSignOutOne,
+#exitBtn,
+#cancelBtn,
+#unsubConfirm-btnDeleteData,
+#sign-out-cancel-btn,
+#unsub-btnDeleteDataUndoArrival {
+    @include active-passive;
+}
+
+#departureBtn,
+#arrivalBtn,
+#signIn-btn {
+    &.active-btn {
+        @include activate;
+    }
+}
+
+#review-submitconfirmation-RoutePlanReview {
+    width: 402px;
+    height: 60px;
+    margin-left: 60px;
+    padding: 18px;
+    margin-top: 20px;
+}
+
+.active-btn {
+    &:hover { /* change to "active-btn:active" to enable pressed event*/
+        // opacity: .3;
+    }
+}
+
+.menu-btn:hover {
+    // opacity: 0.5;
+}
+
+// menu
+.menu-btn,
+#edit-btn,
+#edit-done-btn,
+#inventoryDoneBtn {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 34px;
+    right: 34px;
+    border: 5px solid #F7F7F8;
+    background-color: $white;
+}
+
+#inventoryDoneBtn {
+    // right: 34px;
+    /*
+     * not sure why inventory button is not getting the right position. 
+     * For now adjusting its location through left
+    */
+    left: 930px;
+}
+
+.menu-btn {
+    background: $white url(../img/ICON_menu.png) no-repeat center center;
+    opacity: 1;
+    @include transform-it('left');
+
+    &.close-btn {
+        background: $white url(../img/ICON_close.png) no-repeat center center;
+        right: 364px;
+        opacity: 1;
+        @include transform-it('left');
+
+    }
+}
+
+#route-plan-overview-view {
+    .close-btn {
+        
+    }
+}
+
+#inventoryDoneBtn {
+    background: $white url(../img/ICON_close.png) no-repeat center center;
+}
+
+#edit-done-btn {
+    img {
+        width: 30px;
+    }
+}
+
+// pop ups, footer buttons etc..
+
+// .back-btn {
+//     top: 25px;
+//     border: 0;
+//     -webkit-box-shadow: none;
+// }
+
+#mainmenuSignOut,
+#mainmenuSignOutOne {
+    width: 325px;
+    height: 60px;
+    margin: 10px;
+    padding: 3px 0;
+}

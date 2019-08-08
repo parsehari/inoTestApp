@@ -1,0 +1,198 @@
+.nav {
+    ul {
+        list-style: none;
+
+        li {
+            a {}
+        }
+    }
+}
+
+.menu-header,
+.details-header-text.slider-header-text {
+    font-size: 24px;
+    color: #A29CB4;
+    letter-spacing: 0;
+    line-height: 26px;
+    padding: .8em;
+    text-transform: uppercase;
+}
+
+.menu-items {
+    font-size: 20px;
+    color: $menu-link-color;
+    letter-spacing: 0;
+    line-height: 26px;
+
+    /* backing: */
+    background: $white;
+    clear: both;
+    height: 50px;
+    padding: 12px 10px;
+    margin: 2px 0 0 10px;
+}
+
+.select-route-disable-link {
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+    color: $main-grey;
+}
+
+.select-route-enable {
+    pointer-events: auto;
+    cursor: auto;
+}
+
+#scan-panel,
+#menu-panel-details,
+#menu-panel-overview,
+#menu-panel-inventory {
+    background: #E8E8E9;
+    box-shadow: -4px 0 0 0 rgba(0, 0, 0, 0.1);
+    text-shadow: none;
+    height: 100%;
+
+    // width: 377px;
+    // width: 345px;
+
+    .ui-panel-inner {
+        padding: 0;
+    }
+
+    .menu-items-box {
+        padding-bottom: 10px;
+        background: #f7f7f8;
+
+        /* backing: */
+        border-bottom: 6px solid rgba(18, 12, 36, 0.1);
+    }
+
+    a#mainmenuSignOut,
+    a#mainmenuSignOutOne {
+        .menu-items {
+            /* Log out: */
+            background: none;
+            color: $white;
+            letter-spacing: 0;
+            line-height: 24px;
+            text-shadow: 0 -1px 0 rgba(18, 12, 36, 0.1);
+        }
+    }
+}
+
+#sync-app-overview,
+#sync-app-details {
+    position: relative;
+
+    .lastUpdate {
+        color: $informative-font-color;
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        font-size: 15px;
+
+        .update-label,
+        .update-time {
+            display: inline-block;
+            float: right;
+            clear: right;
+            line-height: 20px;
+        }
+    }
+}
+
+#menu-panel-details {
+    // width: 350px;
+}
+
+/*
+ * SELECT DROPDOWN STYLE 
+ * hiding under an unexisting ID for now
+ */
+
+#myRouteSelectMenu {
+    .select-hidden {
+        display: none;
+        visibility: hidden;
+        padding-right: 10px;
+    }
+
+    .select {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        font-size: 16px;
+        color: $select-color;
+        width: $select-width;
+        height: $select-height;
+    }
+
+    .select-styled {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $select-background;
+        padding: 8px 15px;
+
+        // @include transition(all 0.2s ease-in);
+
+        &:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border: 7px solid transparent;
+            border-color: $select-color transparent transparent transparent;
+            position: absolute;
+            top: 16px;
+            right: 10px;
+        }
+
+        &:hover {
+            background-color: darken($select-background, 2);
+        }
+
+        &:active, &.active {
+            background-color: darken($select-background, 5);
+
+            &:after {
+                top: 9px;
+                border-color: transparent transparent $select-color transparent;
+            }
+        }
+    }
+
+    .select-options {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        z-index: 999;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background-color: darken($select-background, 5);
+
+        li {
+            margin: 0;
+            padding: 12px 0;
+            text-indent: 15px;
+            border-top: 1px solid darken($select-background, 10);
+
+            // @include transition(all 0.15s ease-in);
+
+            &:hover {
+                color: $select-background;
+                background: $select-color;
+            }
+
+            &[rel="hide"] {
+                display: none;
+            }
+        }
+    }
+}

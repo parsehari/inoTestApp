@@ -1,0 +1,64 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-email": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "phonegap-plugin-push": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-device-motion": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-media": {
+      "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO",
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.mallinckrodt.mnkmobile"
+    }
+  },
+  "dependent_plugins": {}
+}

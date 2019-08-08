@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "InterstateLight";
+  src: url("interstate-Light.eot");
+  src: url("interstate-Light.eot?") format("embedded-opentype"),
+       url("interstate-Light.woff") format("woff"),
+       url("interstate-Light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Interstate";
+  src: url("interstate.eot");
+  src: url("interstate.eot?") format("embedded-opentype"),
+       url("interstate.woff") format("woff"),
+       url("interstate.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "InterstateBold";
+  src: url("interstate-Bold.eot");
+  src: url("interstate-Bold.eot?") format("embedded-opentype"),
+       url("interstate-Bold.woff") format("woff"),
+       url("interstate-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+

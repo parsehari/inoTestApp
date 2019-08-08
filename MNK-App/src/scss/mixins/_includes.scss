@@ -1,0 +1,157 @@
+/* Transition */
+@mixin transform-it($property: all) {
+    -webkit-transition: $property 0.7s ease-out;
+       -moz-transition: $property 0.7s ease-out;
+        -ms-transition: $property 0.7s ease-out;
+         -o-transition: $property 0.7s ease-out;
+            transition: $property 0.7s ease-out;
+}
+
+/* Buttons */
+@mixin btn {
+    /* Button Background */
+    background: #6DC069;
+    background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 59%);
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 0 rgba(0, 101, 67, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+    border-width: 0;
+    border-color: none;
+    border-radius: 2px;
+
+    /* Button Label */
+    color: $white;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-shadow: 0 -1px 0 rgba(18, 12, 36, 0.1);
+    text-align: center;
+}
+
+@mixin signInBtn {
+    @include btn;
+
+    background: #CFCFD0;
+    background: rgba(255, 255, 255, 0.5);
+    color: rgba(18, 11, 37, 0.2);
+    text-shadow: 0 -1px 0 rgba(19, 15, 33, 0.2);
+}
+
+@mixin passiveBtn {
+    @include btn;
+
+    background: #CFCFD0;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 0 rgba(66, 60, 84, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+
+@mixin activate {
+    background: #6DC069;
+    background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 59%);
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 0 rgba(0, 101, 67, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+
+@mixin active-passive {
+    /* backing: */
+    background: #CFCFD0;
+    background: #657CBD;
+    background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 59%);
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 0 rgba(66, 60, 84, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+
+@mixin popupBtn {
+    width: 230px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+@mixin footerBtn {
+    @include btn;
+
+    width: 191px;
+}
+
+/* Tabs */
+@mixin tabbed-panel-tab-font {
+    font-size: 16px !important;
+    letter-spacing: 0;
+
+    // line-height: 30px;
+}
+
+@mixin overflow-wrap {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Inputs */
+@mixin input {
+    /* Rectangle: */
+    background: $white;
+    border: 1px solid rgba(210, 204, 228, 0.5);
+    border-radius: 2px;
+    height: 55px;
+    padding: 10px;
+
+    /* text */
+    font-family: $main-font-light;
+    font-size: 20px;
+    color: #423C54;
+    letter-spacing: 0;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:focus {
+        border: 2px solid #6DC069 !important;
+    }
+}
+
+/* tables */
+@mixin table-span {
+    height: 83px;
+    font-size: 16px;
+    color: #423C54;
+    letter-spacing: 0;
+    line-height: 30px;
+    display: inline-block;
+    padding: 8px 0 30px 13px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* backing: */
+    background: transparent;
+    border-right: 1px solid #DFDFE0;
+    border-bottom: 1px solid #DFDFE0;
+}
+
+@mixin reminder {
+    /* backing: */
+    background: $reminder-box-bg-color;
+    border: 1px solid $reminder-box-border-color;
+    box-shadow: 0 1px 0 0 $reminder-box-shadow-color;
+    border-radius: 4px;
+
+    /* text */
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 21px;
+    color: $reminder-box-text-color;
+    padding: 10px;
+    margin: 0;
+
+    p {
+        span {
+            color: $reminder-box-title-color;
+        }
+    }
+}
+
+/* box pointer */
+@mixin pointer {
+    content: "";
+    position: absolute;
+    border: solid 15px transparent;
+    z-index: 1;
+}

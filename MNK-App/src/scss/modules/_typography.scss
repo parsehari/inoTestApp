@@ -1,0 +1,91 @@
+// EY Interstate Light
+
+@font-face {
+  font-family: "InterstateLight";
+  src: url("../fonts/EYInterstate/interstate-Light.eot");
+  src: url("../fonts/EYInterstate/interstate-Light.eot?") format("embedded-opentype"),
+       url("../fonts/EYInterstate/interstate-Light.woff") format("woff"),
+       url("../fonts/EYInterstate/interstate-Light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Interstate";
+  src: url("../fonts/EYInterstate/interstate.eot");
+  src: url("../fonts/EYInterstate/interstate.eot?") format("embedded-opentype"),
+       url("../fonts/EYInterstate/interstate.woff") format("woff"),
+       url("../fonts/EYInterstate/interstate.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "InterstateBold";
+  src: url("../fonts/EYInterstate/interstate-Bold.eot");
+  src: url("../fonts/EYInterstate/interstate-Bold.eot?") format("embedded-opentype"),
+       url("../fonts/EYInterstate/interstate-Bold.woff") format("woff"),
+       url("../fonts/EYInterstate/interstate-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+//Open Sans font types
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans/OpenSans-Bold.ttf') format('truetype');
+
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans-BoldItalic.ttf') format('truetype');
+
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans/OpenSans-italic.ttf') format('truetype');
+
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans/OpenSans-Light.ttf') format('truetype');
+
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans/OpenSans-LightItalic.ttf') format('truetype');
+
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf') format('truetype');
+
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans/OpenSans-SemiBold.ttf') format('truetype');
+
+  font-weight: 600;
+  font-style: normal;
+}
+

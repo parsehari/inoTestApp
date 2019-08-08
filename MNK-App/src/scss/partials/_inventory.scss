@@ -1,0 +1,97 @@
+// inventory
+
+#inventory-table-wrap {}
+
+.inventory-table-header {
+    height: 45px;
+    background: $table-header-background-color;
+    border-bottom: 6px solid $table-border-color;
+
+    span {
+        width: 120px;
+        font-size: 16px;
+        color: #423C54;
+        letter-spacing: 0;
+        line-height: 30px;
+        display: inline-block;
+        padding: .2em 1em;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:first-child {
+            margin-left: 45px;
+        }
+
+        &.item {
+            width: 216px;
+        }
+
+        &.description {
+            width: 344px;
+        }
+
+        &.committed,
+        &.total {
+            width: 180px;
+        }
+    }
+}
+
+/* ul container for the route list called table */
+#inventory-table-details {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 470px;
+    background-color: $table-bg-color;
+    margin-top: 0;
+
+    &.ui-listview > .ui-li-static {
+        background-color: $white;
+        border: none;
+        padding: 0;
+
+        span {
+            @include table-span;
+
+            width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:first-child {
+                width: 59px;
+            }
+
+            &:last-child {
+                width: 59px;
+                border-right: none;
+            }
+
+            &.item {
+                width: 220px;
+            }
+
+            &.description {
+                width: 350px;
+            }
+        }
+    }
+}
+
+#inner-table-wrap {
+    max-height: 550px;
+    overflow-y: auto;
+    margin-top: -30px;
+}
+
+.inner-table-header-data {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 1px;
+}
+
+.inventory-footer {
+    position: absolute;
+    bottom: 0;
+    padding-left: 10px;
+}

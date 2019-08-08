@@ -1,0 +1,46 @@
+
+.logo {
+    @include ipadWidth($logo-width-splash-page, "small");
+
+    // pro-10.5"-ipad
+    @media only screen and (min-width: $break-medium + 1) {
+        @include ipadWidth($logo-width-splash-page, "medium");
+    }
+
+    // large-pro-ipad
+    @media only screen and (min-width: $break-large + 1) {
+        width: $logo-width-splash-page;
+    }
+
+    // img {
+
+    // }
+}
+
+.header {
+    width: 100%;
+    border: 0;
+    padding: 120px 0 0 61px;
+    background: url(../img/LOGO_Mallinckrodt-color.png) no-repeat 61px 20px / 306px 75px;
+
+    .back-btn {
+        position: relative;
+        background: $white url(../img/ICON_arrow_left.png) no-repeat 5px center;
+        padding: 5px 10px 5px 40px;
+        margin-bottom: 15px; // to keep page title down when this item exist
+
+        .back-link-label {
+            font-size: 16px;
+            color: #6DC069;
+            letter-spacing: 0;
+            line-height: 26px;
+            margin: 120px 0 0 48px;
+        }
+    }
+
+    .header-text {
+        font-size: $h1;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+}

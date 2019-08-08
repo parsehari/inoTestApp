@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationProperties</key>
+	<dict>
+		<key>ApplicationPath</key>
+		<string>Applications/MNKMobile.app</string>
+		<key>CFBundleIdentifier</key>
+		<string>com.mallinckrodt.mnkmobile</string>
+		<key>CFBundleShortVersionString</key>
+		<string>0.7.8</string>
+		<key>CFBundleVersion</key>
+		<string>0.7.8</string>
+		<key>SigningIdentity</key>
+		<string>iPhone Developer: Sandeep M (4W6Q5X6N4U)</string>
+	</dict>
+	<key>ArchiveVersion</key>
+	<integer>2</integer>
+	<key>CreationDate</key>
+	<date>2019-08-08T06:43:26Z</date>
+	<key>Name</key>
+	<string>MNKMobile</string>
+	<key>SchemeName</key>
+	<string>MNKMobile</string>
+</dict>
+</plist>
